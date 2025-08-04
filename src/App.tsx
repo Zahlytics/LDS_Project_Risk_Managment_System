@@ -21,10 +21,11 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/sites" element={<Sites />} />
+        <div className="flex flex-col min-h-screen">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/sites" element={<Sites />} />
             <Route path="/incidents" element={<Incidents />} />
             <Route path="/patrols" element={<Patrols />} />
             <Route path="/reports" element={<Reports />} />
@@ -33,8 +34,9 @@ const App = () => {
             <Route path="/settings" element={<Settings />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );

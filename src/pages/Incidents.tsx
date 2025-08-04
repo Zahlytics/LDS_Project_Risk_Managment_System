@@ -59,11 +59,12 @@ const Incidents = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex flex-col h-screen bg-background">
       <Navigation />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex justify-between items-center mb-6">
-          <div>
+      <main className="flex-grow overflow-y-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center mb-6">
+            <div>
             <h1 className="text-2xl font-bold text-foreground">Incident Management</h1>
             <p className="text-muted-foreground">Track and manage security incidents across all sites</p>
           </div>
@@ -262,6 +263,7 @@ const Incidents = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
         </div>
       </main>
     </div>

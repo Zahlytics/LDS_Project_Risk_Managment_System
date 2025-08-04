@@ -71,10 +71,11 @@ const Admin = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex flex-col h-screen bg-background">
       <Navigation />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex justify-between items-center mb-6">
+      <main className="flex-grow overflow-y-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex justify-between items-center mb-6">
           <div>
             <h1 className="text-2xl font-bold text-foreground">System Administration</h1>
             <p className="text-muted-foreground">Manage users, roles, and system settings</p>
@@ -374,6 +375,7 @@ const Admin = () => {
                 </div>
               </DialogContent>
             </Dialog>
+          </div>
           </div>
         </div>
       </main>

@@ -25,7 +25,7 @@ import { Button } from "@/components/ui/button"
 
 const Dashboard = () => {
   return (
-    <div className="main-layout">
+    <div className="main-layout h-full">
         <main className="content-area">
             <div className="security-dashboard-header">
                 <div className="header-text">
