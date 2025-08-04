@@ -1,0 +1,205 @@
+:root {
+    --primary-bg: #f4f7fa;
+    --card-bg: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --active-nav: #3b82f6;
+    --button-primary: #1e293b;
+    --button-text: #ffffff;
+    --risk-high: #ef4444;
+    --risk-medium: #f59e0b;
+    --risk-low: #3b82f6;
+    --trend-up: #ef4444;
+    --trend-down: #16a34a;
+    
+    /* Status Badge Colors */
+    --status-secure-bg: #e6f7f0;
+    --status-secure-text: #0d9488;
+    --status-alert-bg: #fef3c7;
+    --status-alert-text: #d97706;
+    --status-maintenance-bg: #ffedd5;
+    --status-maintenance-text: #f97316;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+}
+
+/* Main Content */
+.content-area { padding: 24px 30px; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.page-header h1 { font-size: 24px; margin: 0; font-weight: 700; }
+
+/* KPI Cards with Trends */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px; }
+.kpi-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+}
+.kpi-card .value { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+.kpi-card .label { font-size: 14px; color: var(--text-secondary); }
+.kpi-card .trend { font-size: 13px; font-weight: 500; margin-left: 8px; }
+.trend.up { color: var(--trend-up); }
+.trend.down { color: var(--trend-down); }
+
+/* Modern Dashboard Layout */
+.dashboard-grid { display: grid; grid-template-columns: 1fr 400px; gap: 24px; align-items: start; }
+.main-column, .right-sidebar { display: flex; flex-direction: column; gap: 24px; }
+.widget-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+
+/* Generic Card Styles */
+.widget-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* Interactive Map Card */
+.map-placeholder {
+    height: 300px;
+    background-color: #e2e8f0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+    background-image: url('https://i.imgur.com/uRslm2A.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Attention & List Items */
+.attention-item {
+     display: flex;
+     justify-content: space-between;
+     align-items: flex-start;
+     padding: 12px 0;
+     border-bottom: 1px solid var(--border-color);
+}
+ .attention-item:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.attention-item .info .title { font-weight: 500; margin-bottom: 4px; }
+.attention-item .info .subtitle { font-size: 13px; color: var(--text-secondary); }
+.badge { padding: 5px 12px; border-radius: 16px; font-size: 12px; font-weight: 500; color: white; }
+.badge-high { background-color: var(--risk-high); }
+
+/* Quick Actions Widget */
+.actions-list button { display: flex; align-items: center; width: 100%; padding: 12px; margin-bottom: 8px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--card-bg); font-family: 'Roboto', sans-serif; font-size: 14px; font-weight: 500; text-align: left; cursor: pointer; transition: background-color 0.2s, border-color 0.2s; }
+.actions-list button:hover { background-color: #f8fafc; border-color: #cbd5e1; }
+.actions-list button:last-child { margin-bottom: 0; }
+.actions-list .icon { margin-right: 12px; font-size: 18px; color: var(--text-secondary); }
+
+/* Site Status Widget */
+.site-status-list .status-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 4px; border-bottom: 1px solid var(--border-color); font-size: 14px; font-weight: 500; }
+.site-status-list .status-item:last-child { border-bottom: none; padding-bottom: 0; }
+.site-status-list .status-item:first-child { padding-top: 0; }
+.status-badge { padding: 4px 12px; border-radius: 16px; font-size: 12px; font-weight: 500; text-align: center; }
+.status-badge.alert { background-color: var(--status-alert-bg); color: var(--status-alert-text); }
+.status-badge.secure { background-color: var(--status-secure-bg); color: var(--status-secure-text); }
+.status-badge.maintenance { background-color: var(--status-maintenance-bg); color: var(--status-maintenance-text); }
+
+/* Ongoing Patrol Widget */
+.patrol-info { display: flex; align-items: center; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background-color: #cbd5e1; margin-right: 12px; }
+.patrol-details .title { font-weight: 500; margin-bottom: 4px; font-size: 14px; }
+.patrol-details .subtitle { font-size: 13px; color: var(--text-secondary); }
+.patrol-next-checkpoint { font-size: 13px; color: var(--active-nav); font-weight: 500; margin-top: 6px; }
+
+/* --- NEW ACTIVITY FEED STYLES --- */
+.activity-feed .activity-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+.activity-feed .activity-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.activity-item .info {
+    display: flex;
+    align-items: center;
+}
+.activity-item .icon {
+    font-size: 18px;
+    margin-right: 12px;
+}
+ .activity-item .timestamp {
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    margin-left: 16px;
+}
+
+/* Security Dashboard Header */
+.security-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    margin-bottom: 24px;
+}
+
+.header-text h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+}
+
+.header-text p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: #f8fafc;
+}
+
+.action-btn .icon {
+    margin-right: 8px;
+    stroke-width: 2;
+}
+
+.action-btn.primary {
+    background-color: #1e293b;
+    color: #ffffff;
+    border-color: #1e293b;
+}
+
+.action-btn.primary:hover {
+    opacity: 0.9;
+}
