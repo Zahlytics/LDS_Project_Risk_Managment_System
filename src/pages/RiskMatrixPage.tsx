@@ -39,7 +39,7 @@ const RiskMatrixPage = () => {
   const [appState, setAppState] = useState({
     risks: allRisks,
     currentPage: 1,
-    itemsPerPage: 10,
+    itemsPerPage: 3,
     filters: { search: '', likelihood: null as number | null, severity: null as number | null }
   });
   const [activeTab, setActiveTab] = useState('matrix');
@@ -172,7 +172,7 @@ const RiskMatrixPage = () => {
     setAppState({
       risks: allRisks,
       currentPage: 1,
-      itemsPerPage: 10,
+      itemsPerPage: 3,
       filters: { search: '', likelihood: null, severity: null }
     });
     updateView();
@@ -192,7 +192,6 @@ const RiskMatrixPage = () => {
 
   return (
     <>
-      <header className="header"><h1>Risk Management</h1><p>Track and manage all identified risks and hazards across sites.</p></header>
       <div className="main-container">
         <div className="left-column">
           <div className="card filter-controls">

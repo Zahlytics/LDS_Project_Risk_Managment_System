@@ -32,7 +32,7 @@ body {
 }
 
 .header {
-    padding: 24px 24px 0 24px;
+    padding: 0 24px 0 24px;
     flex-shrink: 0;
 }
 
@@ -136,6 +136,8 @@ body {
     flex-grow: 1;
     overflow-y: auto;
     padding-right: 10px;
+    min-height: 350px;
+    max-height: 350px;
 }
 
 .hazard-item {

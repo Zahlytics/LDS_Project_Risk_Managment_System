@@ -4,7 +4,6 @@ import RiskMatrixPage from "./RiskMatrixPage"; // The new component
 import Navigation from "@/components/Navigation";
 import Map from "@/components/Map";
 import { Badge } from "@/components/ui/badge";
-import "./Risk.css";
 
 const OriginalRiskPage = () => {
   // Mock data based on the image
@@ -43,17 +42,8 @@ const OriginalRiskPage = () => {
 
   return (
     <div className="flex-1 flex flex-col">
-      <main className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-        <div className="flex flex-col gap-6">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-2xl font-bold">Risk Management</h1>
-              <p className="text-muted-foreground">
-                Track and manage all identified risks and hazards across sites.
-              </p>
-            </div>
-            <Button>+ Identify New Hazard</Button>
-          </div>
+      <main className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="flex flex-col gap-6 p-6">
           <div className="space-y-4">
             {risks.map((risk, index) => (
               <div key={index} className="bg-white p-4 rounded-lg shadow">
@@ -91,7 +81,7 @@ const OriginalRiskPage = () => {
             ))}
           </div>
         </div>
-        <div className="bg-white p-4 rounded-lg shadow flex flex-col">
+        <div className="bg-white p-6 rounded-lg shadow flex flex-col">
           <h2 className="font-semibold mb-2">
             Hazard Location for Gerehu LDS Stake
           </h2>
@@ -134,20 +124,28 @@ const RiskPage = () => {
   return (
     <div className="flex flex-col h-screen">
       <Navigation searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <div className="flex justify-end p-4">
-        <Button
-          onClick={() => setActiveTab("original")}
-          variant={activeTab === "original" ? "default" : "outline"}
-          className="mr-2"
-        >
-          Original View
-        </Button>
-        <Button
-          onClick={() => setActiveTab("matrix")}
-          variant={activeTab === "matrix" ? "default" : "outline"}
-        >
-          Matrix View
-        </Button>
+      <div className="flex justify-between items-center p-4">
+        <div>
+          <h1 className="text-2xl font-bold">Risk Management</h1>
+          <p className="text-muted-foreground">
+            Track and manage all identified risks and hazards across sites.
+          </p>
+        </div>
+        <div className="flex">
+          <Button
+            onClick={() => setActiveTab("original")}
+            variant={activeTab === "original" ? "default" : "outline"}
+            className="mr-2"
+          >
+            Original View
+          </Button>
+          <Button
+            onClick={() => setActiveTab("matrix")}
+            variant={activeTab === "matrix" ? "default" : "outline"}
+          >
+            Matrix View
+          </Button>
+        </div>
       </div>
 
       <div className="flex-1 overflow-auto">
