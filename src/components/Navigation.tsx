@@ -1,14 +1,8 @@
-import { Shield, Activity, MapPin, AlertTriangle, Users, Settings, BarChart3, FileText, Search } from "lucide-react";
+import { Shield, Activity, MapPin, AlertTriangle, Users, Settings, BarChart3, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { useLocation, useNavigate } from "react-router-dom";
 
-interface NavigationProps {
-  searchTerm?: string;
-  setSearchTerm?: (term: string) => void;
-}
-
-const Navigation: React.FC<NavigationProps> = ({ searchTerm, setSearchTerm }) => {
+const Navigation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -54,18 +48,6 @@ const Navigation: React.FC<NavigationProps> = ({ searchTerm, setSearchTerm }) =>
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            {location.pathname === '/risk' && setSearchTerm && (
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  type="search"
-                  placeholder="Search risks..."
-                  className="pl-10"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-            )}
             <div className="flex items-center space-x-2">
               <Button 
                 variant={isActive("/admin") ? "default" : "ghost"} 

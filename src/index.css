@@ -11,29 +11,29 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* SRMS Design System - Professional Security Platform */
-    --background: 210 20% 98%;
-    --foreground: 215 25% 15%;
+    --background: 220 20% 96%;
+    --foreground: 220 15% 25%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+    --card: 220 25% 99%;
+    --card-foreground: 220 15% 25%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 15%;
+    --popover: 220 25% 99%;
+    --popover-foreground: 220 15% 25%;
 
     /* Primary: Deep Navy for Trust and Authority */
-    --primary: 214 84% 12%;
+    --primary: 220 80% 55%;
     --primary-foreground: 210 40% 98%;
-    --primary-light: 214 50% 25%;
+    --primary-light: 220 70% 65%;
 
     /* Secondary: Light Gray for Balance */
-    --secondary: 210 30% 96%;
-    --secondary-foreground: 214 84% 12%;
+    --secondary: 220 15% 90%;
+    --secondary-foreground: 220 80% 55%;
 
-    --muted: 210 30% 96%;
-    --muted-foreground: 215 15% 45%;
+    --muted: 220 15% 90%;
+    --muted-foreground: 220 10% 55%;
 
     /* Accent: Professional Blue for Information */
-    --accent: 210 100% 55%;
+    --accent: 220 100% 60%;
     --accent-foreground: 210 40% 98%;
 
     /* Status Colors for Security Operations */

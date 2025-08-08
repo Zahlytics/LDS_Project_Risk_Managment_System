@@ -119,11 +119,10 @@ const OriginalRiskPage = () => {
 
 const RiskPage = () => {
   const [activeTab, setActiveTab] = useState("original");
-  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="flex flex-col h-screen">
-      <Navigation searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <Navigation />
       <div className="flex justify-between items-center p-4">
         <div>
           <h1 className="text-2xl font-bold">Risk Management</h1>
