@@ -1,7 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Plus, List, Shield, Clock, AlertTriangle, Users, ArrowUp, ArrowDown } from 'lucide-react';
-import { BarChart, AreaChart, PieChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Pie, Cell, Line, Area } from 'recharts';
+import { BarChart, PieChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Pie, Cell } from 'recharts';
+import RiskTrendChart from './RiskTrendChart';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -26,13 +27,6 @@ const Dashboard = () => {
     { status: 'Scheduled', count: 5, color: '#2196f3' },
   ];
 
-  const riskTrend = [
-    { date: 'Jul 1', high: 2, medium: 5, low: 10 },
-    { date: 'Jul 8', high: 1, medium: 6, low: 12 },
-    { date: 'Jul 15', high: 3, medium: 4, low: 11 },
-    { date: 'Jul 22', high: 2, medium: 7, low: 9 },
-    { date: 'Jul 29', high: 1, medium: 5, low: 13 },
-  ];
 
   const highPriorityIncidents = [
     { id: 1, title: 'Unauthorized Entry', site: 'Gerehu Stake' },
@@ -104,57 +98,8 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Balance Summary Chart -> Risk Trend */}
-          <div className="card balance-card">
-            <div className="balance-header">
-              <h3 className="balance-title">Risk Trend</h3>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-3 h-3 rounded-full bg-[#8b5cf6]"></div>
-                  <span>High</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-3 h-0.5 bg-[#a78bfa]"></div>
-                  <span>Medium</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-3 h-0.5 bg-[#c4b5fd]"></div>
-                  <span>Low</span>
-                </div>
-                <select className="month-selector">
-                  <option>Last 30 Days</option>
-                  <option>Last 90 Days</option>
-                </select>
-              </div>
-            </div>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={riskTrend} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="colorHigh" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.4}/>
-                      <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
-                  <XAxis dataKey="date" tick={{ fill: '#666', fontSize: 11 }} tickLine={false} axisLine={false} />
-                  <YAxis tick={{ fill: '#666', fontSize: 11 }} tickLine={false} axisLine={false} />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                      backdropFilter: 'blur(5px)',
-                      border: '1px solid #e0e0e0',
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-                    }}
-                  />
-                  <Area type="monotone" dataKey="high" stroke="#8b5cf6" strokeWidth={2} fillOpacity={1} fill="url(#colorHigh)" dot={false} />
-                  <Line type="monotone" dataKey="medium" stroke="#a78bfa" strokeWidth={2} strokeDasharray="5 5" dot={false} />
-                  <Line type="monotone" dataKey="low" stroke="#c4b5fd" strokeWidth={2} strokeDasharray="5 5" dot={false} />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
+          {/* Risk Trend Chart */}
+          <RiskTrendChart />
 
           {/* Bottom Row */}
           <div className="bottom-row">
