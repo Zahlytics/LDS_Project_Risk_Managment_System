@@ -1,8 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Plus, List, Shield, Clock, AlertTriangle, Users, ArrowUp, ArrowDown } from 'lucide-react';
-import { BarChart, PieChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Pie, Cell } from 'recharts';
+import { PieChart, Tooltip, Legend, ResponsiveContainer, Pie, Cell } from 'recharts';
 import RiskTrendChart from './RiskTrendChart';
+import IncidentsByTypeChart from './IncidentsByTypeChart';
+import PatrolStatusChart from './PatrolStatusChart';
+import SiteSummaryCard from './SiteSummaryCard';
+import ReportsSummaryCard from './ReportsSummaryCard';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -99,40 +103,14 @@ const Dashboard = () => {
           </div>
 
           {/* Risk Trend Chart */}
-          <RiskTrendChart />
+          <div>
+            <RiskTrendChart />
+          </div>
 
           {/* Bottom Row */}
           <div className="bottom-row">
-            <div className="card">
-              <h4 className="transaction-title">Incidents by Type</h4>
-              <div className="chart-container" style={{ height: '180px' }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={incidentsByType} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
-                    <XAxis dataKey="type" tick={{ fontSize: 10 }} />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="count" fill="#667eea" radius={[4, 4, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-
-            <div className="card">
-              <h4 className="transaction-title">Patrol Status</h4>
-              <div className="chart-container" style={{ height: '180px' }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie data={patrolStatus} dataKey="count" nameKey="status" cx="50%" cy="50%" innerRadius={40} outerRadius={60} paddingAngle={5}>
-                      {patrolStatus.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                    <Legend wrapperStyle={{ fontSize: "12px" }} />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
+            <IncidentsByTypeChart />
+            <PatrolStatusChart />
           </div>
 
           {/* Transaction History -> Recent Activity */}
@@ -201,37 +179,11 @@ const Dashboard = () => {
 
           <div className="card expenses-summary" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
             <div className="balance-header">
-              <h4 className="balance-title">Patrols Overview</h4>
+              <h4 className="balance-title">Sites Overview</h4>
             </div>
-            <div className="expense-chart">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie data={[{ value: totalPatrols - kpiData.ongoingPatrols }, { value: kpiData.ongoingPatrols }]} dataKey="value" cx="50%" cy="50%" innerRadius={'75%'} outerRadius={'100%'} startAngle={90} endAngle={450}>
-                    <Cell fill="#2196f3" />
-                    <Cell fill="#e0e0e0" />
-                  </Pie>
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="expense-total">
-                <div className="total-label">Completed</div>
-                <div className="total-amount">{Math.round(((totalPatrols - kpiData.ongoingPatrols) / totalPatrols) * 100)}%</div>
-              </div>
-            </div>
-            <div className="expense-items" style={{ flex: 1 }}>
-              {patrolStatus.map(item => (
-                <div className="expense-item" key={item.status}>
-                  <div className="expense-label">
-                    <div className="legend-dot" style={{ backgroundColor: item.color }}></div>
-                    <span>{item.status}</span>
-                  </div>
-                  <span>{item.count}</span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-auto pt-4 text-sm font-semibold">
-              {totalPatrols} Total Patrols Logged
-            </div>
+            <SiteSummaryCard />
           </div>
+          <ReportsSummaryCard />
         </div>
       </div>
     </div>

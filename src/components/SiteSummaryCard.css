@@ -1,0 +1,35 @@
+h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+.total {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #666;
+}
+.progress-container {
+    margin-bottom: 15px;
+}
+.progress-bar {
+    background-color: #e5e7eb;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 35px;
+    display: flex;
+    align-items: center;
+}
+.progress {
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.red { background-color: #f47070; }
+.yellow { background-color: #f7b946; }
+.green { background-color: #6cc29f; }

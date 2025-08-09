@@ -24,12 +24,46 @@
 }
 
 .card {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s ease-in-out;
   position: relative;
-  border: none; /* Override default border */
+  overflow: hidden;
+}
+
+/* FIXED: Updated card header styles with proper flex layout */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* NEW: Header left section for title and legend grouping */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+
+/* UPDATED: Card title styles */
+.card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #101828;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .stat-card {
@@ -132,7 +166,7 @@
 
 .chart-container {
   position: relative;
-  height: 240px;
+  height: 300px;
 }
 
 .bottom-row {
@@ -229,56 +263,6 @@
   color: white;
 }
 
-.expense-chart {
-  width: 120px;
-  height: 120px;
-  margin: 20px auto;
-  position: relative;
-}
-
-.expense-total {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.total-label {
-  font-size: 12px;
-  color: #666;
-}
-
-.total-amount {
-  font-size: 18px;
-  font-weight: 700;
-  color: #333;
-}
-
-.expense-items {
-  margin-top: 20px;
-}
-
-.expense-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-  font-size: 12px;
-}
-
-.expense-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.legend-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
 .transaction-history {
   grid-column: 1 / -1;
 }
@@ -319,72 +303,109 @@
   color: #666;
 }
 
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-}
-
-.card-title {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: #101828;
-}
-
-.controls {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
+/* FIXED: Updated legend styles with proper interactive behavior */
 .legend {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #475467; /* Default inactive color */
-    cursor: pointer;
-    transition: color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475467;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 4px 8px;
+  border-radius: 6px;
 }
 
-.legend-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.legend-indicator.dot {
-    width: 10px;
-    height: 10px;
-}
-
-.legend-indicator.dash {
-    width: 12px;
-    height: 2px;
-    border-radius: 1px;
+.legend-item:hover {
+  background-color: #f9fafb;
 }
 
 .legend-item.active {
-    color: #101828; /* Darker text for active item */
+  color: #101828;
+  font-weight: 600;
 }
 
+.legend-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.legend-indicator.dot {
+  width: 10px;
+  height: 10px;
+}
+
+.legend-indicator.dash {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+/* UPDATED: Improved dropdown styles */
 #time-select {
-    border: 1px solid #F2F4F7;
-    background-color: #F9FAFB;
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #344054;
-    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  border: 1px solid #d0d5dd;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #344054;
+  cursor: pointer;
+  min-width: 140px;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+#time-select:focus {
+  outline: none;
+  border-color: #7f56d9;
+  box-shadow: 0 0 0 3px rgba(127, 86, 217, 0.1);
+}
+
+/* OPTIONAL: Legend section for standalone legend positioning */
+.legend-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.legend-section .legend {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* NEW: Responsive adjustments for legend */
+@media (max-width: 768px) {
+  .card-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .header-left {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .legend {
+    gap: 12px;
+  }
+  
+  .legend-item {
+    font-size: 12px;
+  }
+  
+  #time-select {
+    min-width: 120px;
+  }
 }

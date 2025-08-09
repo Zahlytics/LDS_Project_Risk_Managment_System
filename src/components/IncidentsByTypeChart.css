@@ -1,0 +1,141 @@
+/* A more modern box-sizing approach */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main container for the entire chart component */
+.chart-container-new {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Header section with title */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.chart-title h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* Main chart area */
+.chart-area {
+    display: flex;
+}
+
+.y-axis-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #718096;
+    padding-right: 16px;
+    text-align: right;
+    height: 220px;
+}
+
+/* Wrapper for the grid and x-labels */
+.chart-content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* This now acts as the L-shaped axis frame */
+.chart-grid {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch; /* Make children (wrappers) take full height */
+    border-left: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* MODIFICATION: This now acts as the background track */
+.bar-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex: 0 1 50px; /* Do not grow, basis of 50px */
+    background-color: #EDF2F7; /* Light grey track color */
+    border-radius: 25px; /* Pill shape */
+    transition: filter 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.bar-wrapper:hover {
+    filter: brightness(0.97);
+}
+
+/* This is the foreground bar with the actual data value */
+.bar-value {
+    width: 100%; 
+    background-color: #a0aec0; /* Medium grey data color */
+    border-radius: 25px; 
+}
+
+/* Tooltip styling */
+.tooltip {
+    position: absolute;
+    bottom: 105%;
+    background-color: #2d3748;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+}
+
+/* Tooltip pointer/arrow */
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #2d3748 transparent transparent transparent;
+}
+
+/* Show tooltip on hover of the wrapper */
+.bar-wrapper:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Container for the X-axis labels */
+.x-axis-labels {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 8px;
+}
+
+.category-label {
+    flex: 0 1 50px; /* Match width of bar wrappers for alignment */
+    font-size: 14px;
+    color: #718096;
+    text-align: center;
+    padding: 0 5px; /* Add padding to prevent text wrapping */
+}
